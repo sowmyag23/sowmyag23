@@ -9,7 +9,7 @@ services:
       - 8888:3333
     environment:
       HTTP_PORT: 3333
-      DB_NAME: your_db_name  # Replace with your actual DB_NAME
+      DB_NAME: weather_stats  # Replace with your actual DB_NAME
     depends_on:
       - mongodb
 
@@ -18,9 +18,9 @@ services:
       context: .
       dockerfile: newbackdockerfile
     environment:
-      DB_NAME: your_db_name  # Replace with your actual DB_NAME
+      DB_NAME: weather_stats  # Replace with your actual DB_NAME
       UPDATE_INTERVAL: 3600
-      WEATHER_LOCATION: your_weather_location  # Replace with your actual WEATHER_LOCATION
+      WEATHER_LOCATION: 46835  # Replace with your actual WEATHER_LOCATION
     depends_on:
       - mongodb
 
