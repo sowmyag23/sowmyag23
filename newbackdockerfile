@@ -3,7 +3,7 @@ ARG DB_NAME="your_db_name"
 ARG UPDATE_INTERVAL="3600"
 ARG WEATHER_LOCATION="your_weather_location"
 
-ADD your_backend_app_filename.py /
+ADD newbackend.py /
 RUN pip install pymongo requests
 
 ENV DB_NAME=${DB_NAME}
