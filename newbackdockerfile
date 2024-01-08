@@ -1,14 +1,6 @@
 FROM python:3
-ARG DB_NAME="your_db_name"
-ARG UPDATE_INTERVAL="3600"
-ARG WEATHER_LOCATION="your_weather_location"
-
 ADD newbackend.py /
-RUN pip install pymongo requests
-
-ENV DB_NAME=${DB_NAME}
-ENV UPDATE_INTERVAL=${UPDATE_INTERVAL}
-ENV WEATHER_LOCATION=${WEATHER_LOCATION}
-
+RUN pip install pymongo requests}
+EXPOSE ${LISTEN_PORT}
 ENTRYPOINT ["python"]
 CMD ["newbackend.py"]
