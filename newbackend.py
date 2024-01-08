@@ -10,7 +10,7 @@ weather_location = environ.get("WEATHER_LOCATION")
 def main():
     weatherdb = connect_database()
     print(f"Database: {weatherdb.name}")
-    update_weather_data(weatherdb)
+    retrieve_weather_data(weatherdb)
 
 def connect_database():
     if db_name is None:
