@@ -37,6 +37,14 @@ def retrieve_weather_data():
         print("Error retrieving weather data")
         return None
 
+def start_http():
+    global listen_port
+    if listen_port is None:
+        listen_port = "3333"
+    @app.route('/')
+    def index():
+        return 'Hello World'
+    app.run(host='0.0.0.0', port=int(listen_port))
 # ... (remaining code is unchanged)
 
 if __name__ == "__main__":
