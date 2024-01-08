@@ -13,6 +13,7 @@ weather_location = environ.get("WEATHER_LOCATION")
 def main():
     weatherdb = connect_database()
     print(f"Database: {weatherdb.name}")
+    retrieve_weather_data()
     start_http()
 
 def connect_database():
