@@ -37,6 +37,20 @@ def retrieve_weather_data():
         print("Error retrieving weather data")
         return None
 
+@app.route('/weather')
+def get_weather():
+    db = connect_database()
+    collection = db["weather"]
+
+    past_24_hours = datetime.now() - timedelta(hours=24)
+    weather_data_list = list(collection.find({"timestamp": {"$gte": past_24_hours}}))
+
+    if len(weather_data_list) > 0:
+        statistics = calculate_statistics(weather_data_list)
+        return jsonify(statistics)
+    else:
+        return "No weather data available."
+
 def start_http():
     global listen_port
     if listen_port is None:
