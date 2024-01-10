@@ -1,0 +1,7 @@
+FROM python:3
+ARG LISTEN_PORT="3333"
+ADD newfrontend.py /
+RUN pip install flask pymongo requests 
+EXPOSE ${LISTEN_PORT}
+ENTRYPOINT [ "python" ]
+CMD [ "newfrontend.py" ]

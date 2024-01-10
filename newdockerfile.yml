@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: newfrontdockerfile
+    ports:
+      - 8888:3333
+    environment:
+      HTTP_PORT: 3333
+      DB_NAME: weather_stats  # Replace with your actual DB_NAME
+    depends_on:
+      - mongodb
+
+  backend:
+    build:
+      context: .
+      dockerfile: newbackdockerfile
+    environment:
+      DB_NAME: weather_stats  # Replace with your actual DB_NAME
+      UPDATE_INTERVAL: 3600
+      WEATHER_LOCATION: 46835  # Replace with your actual WEATHER_LOCATION
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongo:/data/db
+    expose:
+      - 27017
+
+volumes:
+  mongo:
+
