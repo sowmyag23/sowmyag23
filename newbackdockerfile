@@ -1,6 +1,0 @@
-FROM python:3
-ADD newbackend.py /
-RUN pip install pymongo requests}
-EXPOSE ${LISTEN_PORT}
-ENTRYPOINT ["python"]
-CMD ["newbackend.py"]
